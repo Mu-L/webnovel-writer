@@ -1,0 +1,19 @@
+name: v8 npm publish
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing Scriptor release tag (select the v8 branch before running)
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  select-v8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use the reviewed v8 workflow
+        run: |
+          echo 'This file registers the Scriptor publication entry without changing the default branch.'
+          echo 'Choose v8 in Run workflow, or use gh workflow run v8-npm-publish.yml --ref v8 -f release_tag=scriptor-v8.0.0.'
+          exit 1
